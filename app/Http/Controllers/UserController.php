@@ -28,12 +28,13 @@ class UserController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'nis' => $request->nis,
+            'kelas' => $request->kelas,
             'password' => Hash::make($request->password),
             'role' => 'user',
         ]);
 
         //Redirect ke halaman aspirasi dengan pesan sukses
-        return redirect()->route('aspirasi.index')->with('success', 'User"'. $user->name .'" berhasil didaftarkan.');
+        return redirect()->route('users.index')->with('success', 'User"'. $user->name .'" berhasil didaftarkan.');
     }
     // Tampil daftar user
     public function index()
