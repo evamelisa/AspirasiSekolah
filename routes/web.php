@@ -14,9 +14,9 @@ Route::post('auth/login.post', [AuthController::class, 'login'])
 
 // Route register hanya untuk admin
 Route::middleware(['CekRole:admin'])->group(function () {
-    Route::get('auth/register', [AuthController::class, 'showRegisterForm'])
+    Route::get('auth/register', [UserController::class, 'showRegisterForm'])
     ->name('register');
-    Route::post('auth/register', [AuthController::class, 'register'])->name('register');
+    Route::post('auth/register', [UserController::class, 'register'])->name('register');
 });
 
 //
