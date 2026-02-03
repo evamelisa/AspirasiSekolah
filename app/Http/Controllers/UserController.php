@@ -10,6 +10,31 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+            public function showRegisterForm() {
+        $title = 'Daftar User Baru';
+        return view('auth.register', compact('title'));
+    }
+
+    public function register(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users,username|max:255',
+            'nis' => 'required|unique:users,nis|max:20',
+            'password' => 'required|min:6',
+
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'nis' => $request->nis,
+            'password' => Hash::make($request->password),
+            'role' => 'user',
+        ]);
+
+        //Redirect ke halaman aspirasi dengan pesan sukses
+        return redirect()->route('aspirasi.index')->with('success', 'User"'. $user->name .'" berhasil didaftarkan.');
+    }
     // Tampil daftar user
     public function index()
     {
