@@ -20,7 +20,7 @@
             <p><strong>Foto:</strong></p>
             <img src="{{ asset('storage/' . $aspirasi->photo) }}" 
                 alt="Foto Aspirasi" 
-                style="max-width: 420px; height: auto; border: 1px solid #ccc; padding: 4px;">
+                style="max-width: 300px; height: auto; border: 1px solid #ccc; padding: 4px;">
         @endif
     </section>
 
