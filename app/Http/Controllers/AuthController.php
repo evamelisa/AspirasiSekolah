@@ -15,7 +15,7 @@ class AuthController extends Controller
         return view('auth.login', compact('title'));
     }
 
-    public function login(Request $request) {
+    public function login(Request $request) {   
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
