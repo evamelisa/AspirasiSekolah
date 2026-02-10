@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-            public function showRegisterForm() {
+    public function showRegisterForm() {
         $title = 'Daftar User Baru';
         return view('auth.register', compact('title'));
     }
