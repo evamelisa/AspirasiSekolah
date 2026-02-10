@@ -45,7 +45,7 @@ class UserController extends Controller
         }
 
         $title = 'Kelola User';
-        $users = User::where('role', 'user')->latest()->paginate(10);
+        $users = User::all();
         
         return view('user.index', compact('title', 'users'));
     }
