@@ -15,11 +15,4 @@ class Kategori extends Model
         return $this->hasMany(Aspirasi::class);
     }
 
-    public function run(): void {
-        $kategori = ['sarana', 'prasarana', 'lainnya'];
-
-        foreach ($kategori as $nama_kategori) {
-            Kategori::create(['nama_kategori' => $nama_kategori]);
-        }
-    }
 }
