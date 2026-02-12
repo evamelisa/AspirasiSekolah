@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\UserController;
 
-//Login dan Logout
+//Login
 Route::get('auth/login', [AuthController::class, 'showLoginForm'])
 ->name('login');
 Route::post('auth/login.post', [AuthController::class, 'login'])
@@ -19,7 +19,7 @@ Route::middleware(['CekRole:admin'])->group(function () {
     Route::post('auth/register', [UserController::class, 'register'])->name('register');
 });
 
-//
+// logout dan responses
 Route::middleware(['auth'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])
     ->name('logout');
@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     ->name('responses.store');
 });
 
-//
+// users route
 Route::middleware(['auth', 'CekRole:admin'])->group(function () {
     // Ganti yang manual jadi resource
     Route::resource('users', UserController::class)->only(['index', 'edit', 'update', 'destroy']);
